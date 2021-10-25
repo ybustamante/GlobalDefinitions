@@ -1,0 +1,39 @@
+swagger: '2.0'
+info:
+  title: Global Definitions
+  version: '1.0.0'
+paths: {}
+definitions:
+  genericError:
+    properties:
+      message:
+        type: string
+        description: Identifica el problema con un mensaje.
+        example: Client id or Secret are invalid
+      code:
+        type: string
+        description: 'Codigo de error, usado para interpretaciones de aplicación'
+        example: '401'
+    additionalProperties: false
+    description: >-
+      Indica que los client id son invalidos o que no existe suscripción
+      aprobada.
+    required:
+      - message
+      - code
+  money:
+    properties:
+      amount:
+        type: number
+        format: decimal
+        example: '248750.00'
+        description: Monto de la transacción
+      currency:
+        type: string
+        example: CLP
+        description: Tipo de moneda - ISO 4217
+    additionalProperties: false
+    description: Contiene los atributos del monto de una transacción
+    required:
+      - amount
+      - currency
